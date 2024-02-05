@@ -153,4 +153,8 @@ wakapi_config:
       port: 465
       username: "your_username"
       password: "your_password"
+      password_secret:
+        enabled: false
+        name: wakapi-mail-smtp-password
+        key: password
       tls: true

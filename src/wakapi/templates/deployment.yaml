@@ -44,7 +44,14 @@ spec:
                 secretKeyRef:
                   name: {{ .Values.wakapi_config.db.password_secret.name }}
                   key: {{ .Values.wakapi_config.db.password_secret.key }}
-          {{ end }}
+          {{- end }}
+          {{- if .Values.wakapi_config.mail.smtp.password_secret.enabled }}
+            - name: WAKAPI_MAIL_SMTP_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.wakapi_config.mail.smtp.password_secret.name }}
+                  key: {{ .Values.wakapi_config.mail.smtp.password_secret.key }}
+          {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.wakapi_config.server.port }}
@@ -53,10 +60,12 @@ spec:
             httpGet:
               path: /api/health
               port: http
+            initialDelaySeconds: 10
           readinessProbe:
             httpGet:
               path: /api/health
               port: http
+            initialDelaySeconds: 10
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
           volumeMounts:

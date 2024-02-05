@@ -27,7 +27,7 @@ data:
   WAKAPI_DB_USER: "{{ .Values.wakapi_config.db.user }}"
   {{- if not .Values.wakapi_config.db.password_secret.enabled }}
   WAKAPI_DB_PASSWORD: "{{ .Values.wakapi_config.db.password }}"
-  {{ end }}
+  {{- end }}
   WAKAPI_DB_NAME: "{{ .Values.wakapi_config.db.name }}"
   WAKAPI_DB_TYPE: "{{ .Values.wakapi_config.db.dialect }}"
   WAKAPI_DB_CHARSET: "{{ .Values.wakapi_config.db.charset }}"
@@ -38,6 +38,8 @@ data:
   WAKAPI_MAIL_PROVIDER: "{{ .Values.wakapi_config.mail.provider }}"
   WAKAPI_MAIL_SMTP_HOST: "{{ .Values.wakapi_config.mail.smtp.host }}"
   WAKAPI_MAIL_SMTP_PORT: "{{ .Values.wakapi_config.mail.smtp.port }}"
-  WAKAPI_MAIL_SMTP_USERNAME: "{{ .Values.wakapi_config.mail.smtp.username }}"
-  WAKAPI_MAIL_SMTP_PASSWORD: "{{ .Values.wakapi_config.mail.smtp.password }}"
+  WAKAPI_MAIL_SMTP_USER: "{{ .Values.wakapi_config.mail.smtp.username }}"
+  {{- if not .Values.wakapi_config.mail.smtp.password_secret.enabled }}
+  WAKAPI_MAIL_SMTP_PASS: "{{ .Values.wakapi_config.mail.smtp.password }}"
+  {{- end }}
   WAKAPI_MAIL_SMTP_TLS: "{{ .Values.wakapi_config.mail.smtp.tls }}"
