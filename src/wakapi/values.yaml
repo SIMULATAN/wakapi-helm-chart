@@ -13,6 +13,7 @@ image:
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
+namespaceOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -105,7 +106,7 @@ exposeMetrics: false
 # Wakapi app config
 wakapi_config:
   env: development
-  
+
   server:
     listen_ipv4: "0.0.0.0"    # leave blank to disable ipv4
     listen_ipv6:              # leave blank to disable ipv6
@@ -126,6 +127,10 @@ wakapi_config:
     port:                     # leave blank when using sqlite3
     user:                     # leave blank when using sqlite3
     password:                 # leave blank when using sqlite3
+    password_secret:
+      enabled: false
+      name: wakapi-db-password
+      key: password
     name: /data/wakapi_db.db  # database name for mysql / postgres or file path for sqlite (e.g. /tmp/wakapi.db)
     dialect: sqlite3          # mysql, postgres, sqlite3
     charset: utf8mb4          # only used for mysql connections

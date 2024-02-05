@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "wakapi.fullname" . }}
+  namespace: {{ include "wakapi.namespace" . }}
   labels:
     {{- include "wakapi.labels" . | nindent 4 }}
 spec:
@@ -36,6 +37,14 @@ spec:
           envFrom:
             - configMapRef:
                 name: {{ include "wakapi.fullname" . }}-config-map
+          env:
+          {{- if .Values.wakapi_config.db.password_secret.enabled }}
+            - name: WAKAPI_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.wakapi_config.db.password_secret.name }}
+                  key: {{ .Values.wakapi_config.db.password_secret.key }}
+          {{ end }}
           ports:
             - name: http
               containerPort: {{ .Values.wakapi_config.server.port }}

@@ -3,6 +3,7 @@ apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
   name: {{ include "wakapi.fullname" . }}
+  namespace: {{ include "wakapi.namespace" . }}
   labels:
     {{- include "wakapi.labels" . | nindent 4 }}
 spec:

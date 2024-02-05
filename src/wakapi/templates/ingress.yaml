@@ -5,6 +5,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
+  namespace: {{ include "wakapi.namespace" . }}
   labels:
     {{- include "wakapi.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}

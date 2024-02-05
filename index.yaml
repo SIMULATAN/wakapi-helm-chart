@@ -3,12 +3,22 @@ entries:
   wakapi:
   - apiVersion: v2
     appVersion: 2.10.0
-    created: "2023-12-07T23:31:02.260921646+01:00"
+    created: "2024-02-05T10:40:45.148610621+01:00"
+    description: A Helm chart for self hosted Wakapi server
+    digest: 994a4d1b7715898c48bacd6efd41d14e1975166cedb14a17c8dc50aac27bae02
+    name: wakapi
+    type: application
+    urls:
+    - https://simulatan.github.io/wakapi-helm-chart/wakapi-1.1.0.tgz
+    version: 1.1.0
+  - apiVersion: v2
+    appVersion: 2.10.0
+    created: "2024-02-05T10:40:45.148240544+01:00"
     description: A Helm chart for self hosted Wakapi server
     digest: 330c8e0814a9f4f2544d7f4ec5dc33c6505a0412ee27ac743b7ec488400b2b9f
     name: wakapi
     type: application
     urls:
-      - https://simulatan.github.io/wakapi-helm-chart/wakapi-1.0.8.tgz
+    - https://simulatan.github.io/wakapi-helm-chart/wakapi-1.0.8.tgz
     version: 1.0.8
-generated: "2023-12-07T23:31:02.260190193+01:00"
+generated: "2024-02-05T10:40:45.147770376+01:00"

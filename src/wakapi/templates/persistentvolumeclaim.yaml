@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: {{ template "wakapi.fullname" . }}
+  namespace: {{ include "wakapi.namespace" . }}
   labels:
     app: {{ template "wakapi.name" . }}
     chart: {{ template "wakapi.chart" . }}
